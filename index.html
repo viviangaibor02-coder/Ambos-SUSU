@@ -78,7 +78,32 @@
     .producto-oculto{display:none;}
 
     .btn-toggle{background:none;border:none;color:#7a6a6a;font-weight:600;margin:20px auto;cursor:pointer;display:flex;align-items:center;gap:6px;}
-    .btn-toggle .flecha{font-size:18px;color:var(--dorado);}
+    .btn-toggle .flecha{font-size:18px;color:var(--dorado);} 
+
+
+    @media (max-width: 600px) {
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav a, nav button {
+    width: 100%;
+  }
+
+  .card img {
+    height: 220px;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+}
+
+
+    
   </style>
 </head>
 <body>
@@ -101,7 +126,7 @@
     En <strong>Ambos SUSU</strong>, seleccionamos cuidadosamente los mejores ambos de <strong>Estados Unidos </strong>
     para ofrecerte una experiencia superior. No solo vendemos uniformes; entregamos la <strong>herramienta de trabajo</strong> más cómoda
     que hayas usado jamás.
-​    Nuestra tecnología de tela elastizada te permite moverte con total libertad, manteniendo siempre 
+​    La tecnología de tela elastizada te permite moverte con total libertad, manteniendo siempre 
     un ajuste impecable y profesional.
   </p>
   <p>
@@ -122,60 +147,60 @@
   <h3>Ambos para Mujer</h3>
   <div class="productos" id="productos-mujer">
     <div class="card">
-      <img src="mujer1.jpg" alt="Scrub Rosa">
+      <img src="logo.jpeg" alt="Scrub Rosa">
       <h4>Scrub Rosa</h4>
       <p>Tela: Antifluido</p>
       <p class="precio">$60.000</p>
       <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',60000,this)">Agregar</button>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
-    <div class="card">
-      <img src="mujer2.jpg" alt="Scrub Beige">
-      <h4>Scrub Beige</h4>
-      <p>Tela: Algodón premium</p>
-      <p class="precio">$58.000</p>
-      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Beige',58000,this)">Agregar</button>
-    </div>
-    <div class="card">
-      <img src="mujer3.jpg" alt="Scrub Verde">
-      <h4>Scrub Verde</h4>
+   <div class="card">
+      <img src="logo.jpeg" alt="Scrub Rosa">
+      <h4>Scrub Rosa</h4>
       <p>Tela: Antifluido</p>
-      <p class="precio">$62.000</p>
+      <p class="precio">$60.000</p>
       <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Verde',62000,this)">Agregar</button>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
-    <div class="card producto-oculto">
-      <img src="mujer4.jpg" alt="Scrub Celeste">
-      <h4>Scrub Celeste</h4>
-      <p>Tela: Algodón</p>
-      <p class="precio">$59.000</p>
+    <div class="card">
+      <img src="logo.jpeg" alt="Scrub Rosa">
+      <h4>Scrub Rosa</h4>
+      <p>Tela: Antifluido</p>
+      <p class="precio">$60.000</p>
       <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Celeste',59000,this)">Agregar</button>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
-<div class="card producto-oculto">
-      <img src="mujer4.jpg" alt="Scrub Celeste">
-      <h4>Scrub Celeste</h4>
-      <p>Tela: Algodón</p>
-      <p class="precio">$59.000</p>
+   <div class="card">
+      <img src="logo.jpeg" alt="Scrub Rosa">
+      <h4>Scrub Rosa</h4>
+      <p>Tela: Antifluido</p>
+      <p class="precio">$60.000</p>
       <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Celeste',59000,this)">Agregar</button>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
-<div class="card producto-oculto">
-      <img src="mujer4.jpg" alt="Scrub Celeste">
-      <h4>Scrub Celeste</h4>
-      <p>Tela: Algodón</p>
-      <p class="precio">$59.000</p>
+<div class="card">
+      <img src="logo.jpeg" alt="Scrub Rosa">
+      <h4>Scrub Rosa</h4>
+      <p>Tela: Antifluido</p>
+      <p class="precio">$60.000</p>
       <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Celeste',59000,this)">Agregar</button>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
-<div class="card producto-oculto">
-      <img src="mujer4.jpg" alt="Scrub Celeste">
-      <h4>Scrub Celeste</h4>
-      <p>Tela: Algodón</p>
-      <p class="precio">$59.000</p>
+<div class="card">
+      <img src="logo.jpeg" alt="Scrub Rosa">
+      <h4>Scrub Rosa</h4>
+      <p>Tela: Antifluido</p>
+      <p class="precio">$60.000</p>
       <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Celeste',59000,this)">Agregar</button>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
+    </div>
+<div class="card">
+      <img src="logo.jpeg" alt="Scrub Rosa">
+      <h4>Scrub Rosa</h4>
+      <p>Tela: Antifluido</p>
+      <p class="precio">$60.000</p>
+      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
 
   </div>
@@ -193,31 +218,31 @@
       <p>Tela: Algodón</p>
       <p class="precio">$55.000</p>
       <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Azul',55000,this)">Agregar</button>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Azul',55000,'Hombre',this)">Agregar</button>
+    </div>
+     <div class="card">
+      <img src="hombre1.jpg" alt="Scrub Azul">
+      <h4>Scrub Azul</h4>
+      <p>Tela: Algodón</p>
+      <p class="precio">$55.000</p>
+      <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Azul',55000,'Hombre',this)">Agregar</button>
     </div>
     <div class="card">
-      <img src="hombre2.jpg" alt="Scrub Negro">
-      <h4>Scrub Negro</h4>
-      <p>Tela: Antifluido</p>
-      <p class="precio">$57.000</p>
+      <img src="hombre1.jpg" alt="Scrub Azul">
+      <h4>Scrub Azul</h4>
+      <p>Tela: Algodón</p>
+      <p class="precio">$55.000</p>
       <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Negro',57000,this)">Agregar</button>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Azul',55000,'Hombre',this)">Agregar</button>
     </div>
-    <div class="card">
-      <img src="hombre3.jpg" alt="Scrub Gris">
-      <h4>Scrub Gris</h4>
-      <p>Tela: Algodón premium</p>
-      <p class="precio">$56.000</p>
+     <div class="card">
+      <img src="hombre1.jpg" alt="Scrub Azul">
+      <h4>Scrub Azul</h4>
+      <p>Tela: Algodón</p>
+      <p class="precio">$55.000</p>
       <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Gris',56000,this)">Agregar</button>
-    </div>
-    <div class="card producto-oculto">
-      <img src="hombre4.jpg" alt="Scrub Verde">
-      <h4>Scrub Verde</h4>
-      <p>Tela: Antifluido</p>
-      <p class="precio">$58.000</p>
-      <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
-      <button class="btn btn-agregar" onclick="agregar('Scrub Verde',58000,this)">Agregar</button>
+     <button class="btn btn-agregar" onclick="agregar('Scrub Azul',55000,'Hombre',this)">Agregar</button>
     </div>
   </div>
   <button class="btn-toggle" onclick="toggleProductos('productos-hombre', this)" data-visible="false">
@@ -264,7 +289,7 @@
 <script>
   let carrito = [];
 
-  function agregar(nombre, precio, btn) {
+  function agregar(nombre, precio, categoria, btn) {
     const card = btn.closest('.card');
     const select = card.querySelector('select');
     const talle = select.value;
@@ -281,7 +306,7 @@
     btnCarrito.classList.add('shake');
     setTimeout(() => btnCarrito.classList.remove('shake'), 600);
 
-    carrito.push({ nombre, precio, talle });
+   carrito.push({ nombre, precio, talle, categoria });
     actualizar();
   }
 
@@ -294,7 +319,7 @@
     let total=0;lista.innerHTML='';
     carrito.forEach((p,i)=>{
       total+=p.precio;
-      lista.innerHTML+=`<div class="item"><span>${p.nombre} (${p.talle})</span><span>$${p.precio}</span><button onclick="eliminar(${i})">❌</button></div>`;
+      lista.innerHTML+=`<div class="item"><span>${p.nombre} - ${p.categoria} (${p.talle})</span><span>$${p.precio}</span><button onclick="eliminar(${i})">❌</button></div>`;
     });
     document.getElementById('total').textContent=total;
   }
@@ -335,6 +360,7 @@
 
 </body>
 </html>
+
 
 
 
