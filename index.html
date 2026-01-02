@@ -80,18 +80,17 @@
     .btn-toggle{background:none;border:none;color:#7a6a6a;font-weight:600;margin:20px auto;cursor:pointer;display:flex;align-items:center;gap:6px;}
     .btn-toggle .flecha{font-size:18px;color:var(--dorado);}
 
-    /* Mejora visual para celulares */
-    @media (max-width: 600px) {
-      section { padding: 20px 10px; }
-      .productos { grid-template-columns: 1fr; gap: 15px; }
-      header img { max-width: 180px; }
-      nav a, nav button { display: block; margin: 8px 0; }
-      .btn { padding: 10px; font-size: 16px; }
-      #btnTop { width: 40px; height: 40px; font-size: 20px; }
-      .modal-content { width: 90%; padding: 15px; }
-      .card img { height: 200px; }
+    /* Mejoras para móviles */
+    @media (max-width:600px){
+      section{padding:20px 10px;}
+      .productos{grid-template-columns:1fr;gap:15px;}
+      header img{max-width:180px;}
+      nav a, nav button{display:block;margin:8px 0;}
+      .btn{padding:10px;font-size:16px;}
+      #btnTop{width:40px;height:40px;font-size:20px;}
+      .modal-content{width:90%;padding:15px;}
+      .card img{height:200px;}
     }
-
   </style>
 </head>
 <body>
@@ -115,7 +114,7 @@
 <section id="mujeres">
   <h3>Ambos para Mujer</h3>
   <div class="productos" id="productos-mujer">
-    <!-- tus cards originales aquí -->
+    <!-- AQUÍ VAN TODOS TUS CARDS ORIGINALES DE MUJERES -->
   </div>
   <button class="btn-toggle" onclick="toggleProductos('productos-mujer', this)" data-visible="false">
     <span class="flecha">▾</span> Ver más productos
@@ -125,7 +124,7 @@
 <section id="hombres">
   <h3>Ambos para Hombre</h3>
   <div class="productos" id="productos-hombre">
-    <!-- tus cards originales aquí -->
+    <!-- AQUÍ VAN TODOS TUS CARDS ORIGINALES DE HOMBRES -->
   </div>
   <button class="btn-toggle" onclick="toggleProductos('productos-hombre', this)" data-visible="false">
     <span class="flecha">▾</span> Ver más productos
@@ -133,7 +132,9 @@
 </section>
 
 <section id="contacto">
-  <!-- tu contacto original -->
+  <h3>Contacto</h3>
+  <p><strong>WhatsApp:</strong> <a href="https://wa.me/5491158825695" target="_blank" style="color:inherit;text-decoration:none;">+54 9 11 5882-5695</a></p>
+  <p><strong>Instagram:</strong> <a href="https://www.instagram.com/ambos_susu" target="_blank" style="color:inherit;text-decoration:none;">@ambos_susu</a></p>
 </section>
 
 <footer>© 2026 Ambos SUSU</footer>
@@ -174,7 +175,7 @@ function agregar(nombre, precio, btn) {
   btnCarrito.classList.add('shake');
   setTimeout(() => btnCarrito.classList.remove('shake'), 600);
 
-  // Detectar sección
+  // Detectar la sección (Mujeres o Hombres)
   let seccion = card.closest('section').id === 'mujeres' ? 'Mujeres' : 'Hombres';
   carrito.push({ nombre, precio, talle, seccion });
   actualizar();
@@ -208,7 +209,6 @@ function toggleProductos(id, btn){
   const visible = btn.getAttribute('data-visible') === 'true';
 
   ocultos.forEach(card => card.style.display = visible ? 'none' : 'block');
-
   btn.innerHTML = visible ? '<span class="flecha">▾</span> Ver más productos' : '<span class="flecha">▴</span> Ocultar productos';
   btn.setAttribute('data-visible', !visible);
 }
@@ -226,6 +226,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 </body>
 </html>
+
+
 
 
 
