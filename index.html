@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambos SUSU</title>
+
+  <style>
+    :root{
+      --rosa:#f7d9e3;
+      --rosa2:#fdecef;
+      --dorado:#c9a24d;
+      --gris:#333;
+    }
+
+    *{box-sizing:border-box;font-family:Segoe UI, sans-serif;}
+
+    body{margin:0;background:var(--rosa2);color:var(--gris);}    
+
+    header{background:#fff;text-align:center;padding:20px;border-bottom:3px solid var(--rosa);}    
+    header img{max-width:250px;}
+
+    nav{background:var(--rosa);padding:10px;text-align:center;}
+    nav a, nav button{margin:0 10px;font-weight:bold;border:none;background:none;cursor:pointer;}
+
+    section{max-width:1100px;margin:auto;padding:30px 20px;}
+
+    .productos{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+
+    .card{background:#fff;border-radius:15px;padding:15px;box-shadow:0 4px 10px rgba(0,0,0,.1);text-align:center;}
+    .card img{width:100%;height:260px;object-fit:cover;border-radius:10px;}
+
+    .precio{color:var(--dorado);font-weight:bold;font-size:18px;}
+
+    select{margin:8px 0;padding:5px;border-radius:8px;}
+
+    .btn{background:linear-gradient(135deg,var(--rosa),var(--rosa2));border:none;padding:10px 18px;border-radius:25px;font-weight:bold;cursor:pointer;color:#444;box-shadow:0 4px 8px rgba(0,0,0,.12);transition:all .3s ease;}
+    .btn:hover{background:linear-gradient(135deg,var(--dorado),var(--rosa));color:#fff;transform:translateY(-2px);}
+
+    footer{background:#fff;text-align:center;padding:15px;border-top:3px solid var(--rosa);}    
+
+    /* BOTÓN VOLVER ARRIBA */
+    #btnTop{
+      position:fixed;
+      left:20px;
+      bottom:30px;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      border:none;
+      background:linear-gradient(135deg,var(--rosa),var(--rosa2));
+      color:#555;
+      font-size:26px;
+      cursor:pointer;
+      box-shadow:0 6px 12px rgba(0,0,0,0.18);
+      z-index:999;
+      transition:all .3s ease;
+    }
+
+    #btnTop:hover{
+      background:linear-gradient(135deg,var(--dorado),var(--rosa));
+      color:#fff;
+      transform:translateY(-4px);
+    }
+
+    /* MODAL CARRITO */
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);z-index:1000;}
+    .modal-content{background:#fff;max-width:380px;margin:10% auto;padding:20px;border-radius:15px;}
+    .close{float:right;cursor:pointer;font-weight:bold;}
+
+    .item{display:flex;justify-content:space-between;align-items:center;margin:6px 0;}
+    .total{font-weight:bold;margin-top:10px;}
+
+    .btn-agregar.activo{background:var(--dorado);color:white;transform:scale(1.05);}    
+    .shake{animation:shake .6s;}
+    @keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-4px)}50%{transform:translateX(4px)}75%{transform:translateX(-4px)}100%{transform:translateX(0)}}
+
+    .producto-oculto{display:none;}
+
+    .btn-toggle{background:none;border:none;color:#7a6a6a;font-weight:600;margin:20px auto;cursor:pointer;display:flex;align-items:center;gap:6px;}
+    .btn-toggle .flecha{font-size:18px;color:var(--dorado);}
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.JPEG" alt="Ambos SUSU">
+ </header>
+
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#mujeres">Mujeres</a>
+  <a href="#hombres">Hombres</a>
+  <a href="#contacto">Contacto</a>
+  <button class="btn" onclick="verCarrito()">🛒 Ver carrito</button>
+</nav>
+
+<section id="inicio">
+  <h3>​¿Cansado de ambos rígidos que limitan tu día?</h3>
+  <p>
+    En <strong>Ambos SUSU</strong>, seleccionamos cuidadosamente los mejores ambos de <strong>Estados Unidos </strong>
+    para ofrecerte una experiencia superior. No solo vendemos uniformes; entregamos la <strong>herramienta de trabajo</strong> más cómoda
+    que hayas usado jamás.
+​    Nuestra tecnología de tela elastizada te permite moverte con total libertad, manteniendo siempre 
+    un ajuste impecable y profesional.
+  </p>
+  <p>
+​    🌎 <strong>Calidad de Importación:</strong> Marcas líderes de EE.UU. con estándares de durabilidad superiores.
+  </p>
+  <p>
+​    ☁️ <strong>Confort Extremo:</strong> Tela ultra suave diseñada para jornadas de +12 horas.
+  </p>
+  <p>
+​    🔄 <strong>Elasticidad Superior:</strong> Tejido flexible que recupera su forma original, sin deformarse.
+  </p>
+  <p>
+​   ✨ <strong>Estilo Moderno:</strong> Cortes favorecedores que combinan la moda con la funcionalidad médica.
+  </p>
+</section>
+
+<section id="mujeres">
+  <h3>Ambos para Mujer</h3>
+  <div class="productos" id="productos-mujer">
+    <div class="card">
+      <img src="mujer1.jpg" alt="Scrub Rosa">
+      <h4>Scrub Rosa</h4>
+      <p>Tela: Antifluido</p>
+      <p class="precio">$60.000</p>
+      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',60000,this)">Agregar</button>
+    </div>
+    <div class="card">
+      <img src="mujer2.jpg" alt="Scrub Beige">
+      <h4>Scrub Beige</h4>
+      <p>Tela: Algodón premium</p>
+      <p class="precio">$58.000</p>
+      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Beige',58000,this)">Agregar</button>
+    </div>
+    <div class="card">
+      <img src="mujer3.jpg" alt="Scrub Verde">
+      <h4>Scrub Verde</h4>
+      <p>Tela: Antifluido</p>
+      <p class="precio">$62.000</p>
+      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Verde',62000,this)">Agregar</button>
+    </div>
+    <div class="card producto-oculto">
+      <img src="mujer4.jpg" alt="Scrub Celeste">
+      <h4>Scrub Celeste</h4>
+      <p>Tela: Algodón</p>
+      <p class="precio">$59.000</p>
+      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Celeste',59000,this)">Agregar</button>
+    </div>
+<div class="card producto-oculto">
+      <img src="mujer4.jpg" alt="Scrub Celeste">
+      <h4>Scrub Celeste</h4>
+      <p>Tela: Algodón</p>
+      <p class="precio">$59.000</p>
+      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Celeste',59000,this)">Agregar</button>
+    </div>
+<div class="card producto-oculto">
+      <img src="mujer4.jpg" alt="Scrub Celeste">
+      <h4>Scrub Celeste</h4>
+      <p>Tela: Algodón</p>
+      <p class="precio">$59.000</p>
+      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Celeste',59000,this)">Agregar</button>
+    </div>
+<div class="card producto-oculto">
+      <img src="mujer4.jpg" alt="Scrub Celeste">
+      <h4>Scrub Celeste</h4>
+      <p>Tela: Algodón</p>
+      <p class="precio">$59.000</p>
+      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Celeste',59000,this)">Agregar</button>
+    </div>
+
+  </div>
+  <button class="btn-toggle" onclick="toggleProductos('productos-mujer', this)" data-visible="false">
+    <span class="flecha">▾</span> Ver más productos
+  </button>
+</section>
+
+<section id="hombres">
+  <h3>Ambos para Hombre</h3>
+  <div class="productos" id="productos-hombre">
+    <div class="card">
+      <img src="hombre1.jpg" alt="Scrub Azul">
+      <h4>Scrub Azul</h4>
+      <p>Tela: Algodón</p>
+      <p class="precio">$55.000</p>
+      <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Azul',55000,this)">Agregar</button>
+    </div>
+    <div class="card">
+      <img src="hombre2.jpg" alt="Scrub Negro">
+      <h4>Scrub Negro</h4>
+      <p>Tela: Antifluido</p>
+      <p class="precio">$57.000</p>
+      <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Negro',57000,this)">Agregar</button>
+    </div>
+    <div class="card">
+      <img src="hombre3.jpg" alt="Scrub Gris">
+      <h4>Scrub Gris</h4>
+      <p>Tela: Algodón premium</p>
+      <p class="precio">$56.000</p>
+      <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Gris',56000,this)">Agregar</button>
+    </div>
+    <div class="card producto-oculto">
+      <img src="hombre4.jpg" alt="Scrub Verde">
+      <h4>Scrub Verde</h4>
+      <p>Tela: Antifluido</p>
+      <p class="precio">$58.000</p>
+      <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
+      <button class="btn btn-agregar" onclick="agregar('Scrub Verde',58000,this)">Agregar</button>
+    </div>
+  </div>
+  <button class="btn-toggle" onclick="toggleProductos('productos-hombre', this)" data-visible="false">
+    <span class="flecha">▾</span> Ver más productos
+  </button>
+</section>
+
+<section id="contacto">
+  <h3>Contacto</h3>
+  <p>
+    <strong>WhatsApp:</strong>
+    <a href="https://wa.me/5491158825695" target="_blank" style="color:inherit;text-decoration:none;">
+      +54 9 11 5882-5695
+    </a>
+  </p>
+  <p>
+    <strong>Instagram:</strong>
+    <a href="https://www.instagram.com/ambos_susu" target="_blank" style="color:inherit;text-decoration:none;">
+      @ambos_susu
+    </a>
+  </p>
+</section>
+
+<footer>© 2026 Ambos SUSU</footer>
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<button id="btnTop" title="Volver arriba" onclick="window.scrollTo({top:0, behavior:'smooth'})">⬆</button>
+
+<!-- CARRITO -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarCarrito()">✖</span>
+    <h3>Tu carrito</h3>
+    <div id="lista"></div>
+    <p class="total">Total: $<span id="total">0</span></p>
+    <hr>
+    <p><strong>Pago:</strong> Transferencia</p>
+    <p><strong>Alias:</strong> AMBOS.SUSU</p>
+    <p style="font-size:14px;color:#666;">Al finalizar, envíanos el comprobante por WhatsApp.</p>
+    <button class="btn" onclick="enviarWhatsApp()">Finalizar pedido por WhatsApp</button>
+  </div>
+</div>
+
+<script>
+  let carrito = [];
+
+  function agregar(nombre, precio, btn) {
+    const card = btn.closest('.card');
+    const select = card.querySelector('select');
+    const talle = select.value;
+
+    if (!talle || talle === 'Talle') {
+      alert('Por favor seleccioná un talle');
+      return;
+    }
+
+    btn.classList.add('activo');
+    setTimeout(() => btn.classList.remove('activo'), 500);
+
+    const btnCarrito = document.querySelector('nav button');
+    btnCarrito.classList.add('shake');
+    setTimeout(() => btnCarrito.classList.remove('shake'), 600);
+
+    carrito.push({ nombre, precio, talle });
+    actualizar();
+  }
+
+  function eliminar(i){carrito.splice(i,1);actualizar();}
+  function verCarrito(){document.getElementById('modal').style.display='block';}
+  function cerrarCarrito(){document.getElementById('modal').style.display='none';}
+
+  function actualizar(){
+    let lista=document.getElementById('lista');
+    let total=0;lista.innerHTML='';
+    carrito.forEach((p,i)=>{
+      total+=p.precio;
+      lista.innerHTML+=`<div class="item"><span>${p.nombre} (${p.talle})</span><span>$${p.precio}</span><button onclick="eliminar(${i})">❌</button></div>`;
+    });
+    document.getElementById('total').textContent=total;
+  }
+
+  function enviarWhatsApp(){
+    let mensaje='Hola, quiero realizar este pedido:%0A';
+    let total=0;
+    carrito.forEach(p=>{mensaje+=`- ${p.nombre} (${p.talle}) $${p.precio}%0A`;total+=p.precio;});
+    mensaje+=`Total: $${total}%0AAlias: AMBOS.SUSU`;
+    window.open(`https://wa.me/5491158825695?text=${mensaje}`,'_blank');
+  }
+
+  function toggleProductos(id, btn){
+    const cont = document.getElementById(id);
+    const ocultos = cont.querySelectorAll('.producto-oculto');
+    const visible = btn.getAttribute('data-visible') === 'true';
+
+    ocultos.forEach(card => {
+      card.style.display = visible ? 'none' : 'block';
+    });
+
+    btn.innerHTML = visible ? '▾ Ver más productos' : '▴ Ocultar productos';
+    btn.setAttribute('data-visible', !visible);
+  }
+
+  // Mostrar solo 3 productos al inicio
+  document.addEventListener('DOMContentLoaded', ()=>{
+    ['productos-mujer','productos-hombre'].forEach(id=>{
+      const cont=document.getElementById(id);
+      if(!cont) return;
+      const cards=cont.querySelectorAll('.card');
+      cards.forEach((c,i)=>{
+        if(i>=3) c.classList.add('producto-oculto');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
