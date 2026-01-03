@@ -345,7 +345,25 @@ Naranja X
     btnCarrito.classList.add('shake');
     setTimeout(() => btnCarrito.classList.remove('shake'), 600);
 
-   carrito.push({ nombre, precio, talle, categoria });
+  // Buscar si el producto ya está en el carrito
+const existente = carrito.find(p =>
+  p.nombre === nombre &&
+  p.talle === talle &&
+  p.categoria === categoria
+);
+
+if (existente) {
+  existente.cantidad += 1;
+} else {
+  carrito.push({
+    nombre,
+    precio,
+    talle,
+    categoria,
+    cantidad: 1
+  });
+}
+
     actualizar();
   }
 
@@ -356,21 +374,33 @@ Naranja X
   function actualizar(){
     let lista=document.getElementById('lista');
     let total=0;lista.innerHTML='';
-    carrito.forEach((p,i)=>{
-      total+=p.precio;
-      lista.innerHTML+=`<div class="item"><span>${p.nombre} - ${p.categoria} (${p.talle})</span><span>$${p.precio}</span><button onclick="eliminar(${i})">❌</button></div>`;
-    });
+   carrito.forEach((p,i)=>{
+  const subtotal = p.precio * p.cantidad;
+  total += subtotal;
+
+  lista.innerHTML += `
+    <div class="item">
+      <span>
+        ${p.nombre} (${p.categoria})<br>
+        Talle ${p.talle} · x${p.cantidad}
+      </span>
+      <span>$${subtotal}</span>
+      <button onclick="eliminar(${i})">❌</button>
+    </div>
+  `;
+});
+
     document.getElementById('total').textContent=total;
   }
 
   function enviarWhatsApp(){
     let mensaje='Hola, quiero realizar este pedido:%0A';
     let total=0;
-    carrito.forEach(p=>{mensaje+=`- ${p.nombre} (${p.categoria}) - Talle ${p.talle} $${p.precio}%0A`;
-  total+=p.precio;});
-    mensaje+=`Total: $${total}%0AAlias: AMBOS.SUSU`;
-    window.open(`https://wa.me/5491158825695?text=${mensaje}`,'_blank');
-  }
+    carrito.forEach(p=>{
+  const subtotal = p.precio * p.cantidad;
+  mensaje += `- ${p.nombre} (${p.categoria}) - Talle ${p.talle} x${p.cantidad} $${subtotal}%0A`;
+  total += subtotal;
+});
 
   function toggleProductos(id, btn){
     const cont = document.getElementById(id);
@@ -400,6 +430,7 @@ Naranja X
 
 </body>
 </html>
+
 
 
 
