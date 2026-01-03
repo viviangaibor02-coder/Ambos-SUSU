@@ -152,6 +152,13 @@
       <p>Tela: Antifluido</p>
       <p class="precio">$60.000</p>
       <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
+
+      <div style="display:flex; justify-content:center; gap:6px; margin-bottom:8px;">
+  <button onclick="this.nextElementSibling.stepDown()">−</button>
+  <input type="number" value="1" min="1" style="width:45px; text-align:center;">
+  <button onclick="this.previousElementSibling.stepUp()">+</button>
+</div>
+
      <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
    <div class="card">
@@ -280,6 +287,18 @@
     <p class="total">Total: $<span id="total">0</span></p>
     <hr>
     <p><strong>Pago:</strong> Transferencia</p>
+    <p style="font-size:14px;color:#666;">
+ CBU: 4530000800017918696308
+</p>
+      <p style="font-size:14px;color:#666;">
+Titular: Suany Katherine Gaibor Anrango
+</p>
+   <p style="font-size:14px;color:#666;">
+CUIL: 20962062742
+Naranja X
+</p>
+    
+
     <p><strong>Alias:</strong> AMBOS.SUSU</p>
     <p style="font-size:14px;color:#666;">Al finalizar, envíanos el comprobante por WhatsApp.</p>
     <button class="btn" onclick="enviarWhatsApp()">Finalizar pedido por WhatsApp</button>
@@ -327,7 +346,8 @@
   function enviarWhatsApp(){
     let mensaje='Hola, quiero realizar este pedido:%0A';
     let total=0;
-    carrito.forEach(p=>{mensaje+=`- ${p.nombre} (${p.talle}) $${p.precio}%0A`;total+=p.precio;});
+    carrito.forEach(p=>{mensaje+=`- ${p.nombre} (${p.categoria}) - Talle ${p.talle} $${p.precio}%0A`;
+  total+=p.precio;});
     mensaje+=`Total: $${total}%0AAlias: AMBOS.SUSU`;
     window.open(`https://wa.me/5491158825695?text=${mensaje}`,'_blank');
   }
@@ -360,6 +380,7 @@
 
 </body>
 </html>
+
 
 
 
