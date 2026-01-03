@@ -364,13 +364,24 @@ Naranja X
   }
 
   function enviarWhatsApp(){
-    let mensaje='Hola, quiero realizar este pedido:%0A';
-    let total=0;
-    carrito.forEach(p=>{mensaje+=`- ${p.nombre} (${p.categoria}) - Talle ${p.talle} $${p.precio}%0A`;
-  total+=p.precio;});
-    mensaje+=`Total: $${total}%0AAlias: AMBOS.SUSU`;
-    window.open(`https://wa.me/5491158825695?text=${mensaje}`,'_blank');
-  }
+  let mensaje = 'Hola, quiero realizar este pedido:%0A';
+  let total = 0;
+
+  carrito.forEach(p => {
+    const subtotal = p.precio * p.cantidad;
+    mensaje += `- ${p.nombre} (${p.categoria}) - Talle ${p.talle} x${p.cantidad} $${subtotal}%0A`;
+    total += subtotal;
+  });
+
+  mensaje += `%0ATotal: $${total}%0A`;
+  mensaje += `Pago por transferencia%0AAlias: AMBOS.SUSU`;
+
+  window.open(
+    `https://wa.me/5491158825695?text=${mensaje}`,
+    '_blank'
+  );
+}
+
 
   function toggleProductos(id, btn){
     const cont = document.getElementById(id);
@@ -400,6 +411,7 @@ Naranja X
 
 </body>
 </html>
+
 
 
 
