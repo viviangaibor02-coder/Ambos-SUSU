@@ -173,7 +173,29 @@
   box-shadow:0 3px 6px rgba(0,0,0,0.2);
 }
 
-    
+    /* ===== TOAST PRODUCTO AGREGADO ===== */
+.toast{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#ffffff;
+  color:#555;
+  padding:14px 22px;
+  border-radius:20px;
+  font-weight:600;
+  box-shadow:0 6px 14px rgba(0,0,0,0.15);
+  opacity:0;
+  transform:translateY(20px);
+  transition:all .4s ease;
+  z-index:2000;
+  border-left:5px solid var(--dorado);
+}
+
+.toast.mostrar{
+  opacity:1;
+  transform:translateY(0);
+}
+
   </style>
 </head>
 <body>
@@ -408,6 +430,8 @@ NARANJA X
 
    carrito.push({ nombre, precio, talle, categoria });
     actualizar();
+    mostrarToast();
+
   }
 
   function eliminar(i){carrito.splice(i,1);actualizar();}
@@ -477,10 +501,25 @@ NARANJA X
       });
     });
   });
+
+  function mostrarToast(){
+  const toast = document.getElementById('toast');
+  toast.classList.add('mostrar');
+
+  setTimeout(() => {
+    toast.classList.remove('mostrar');
+  }, 2000);
+}
+
 </script>
+<!-- MENSAJE PRODUCTO AGREGADO -->
+<div id="toast" class="toast">
+  ✔ Producto agregado al carrito
+</div>
 
 </body>
 </html>
+
 
 
 
