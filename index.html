@@ -153,6 +153,25 @@
   display:block;
   margin-top:6px;
 }
+/* ===== CONTADOR CARRITO ===== */
+.carrito-btn{
+  position:relative;
+}
+
+#contador-carrito{
+  position:absolute;
+  top:-8px;
+  right:-8px;
+  background:#ff6f91;
+  color:white;
+  font-size:13px;
+  font-weight:700;
+  padding:4px 7px;
+  border-radius:50%;
+  min-width:22px;
+  text-align:center;
+  box-shadow:0 3px 6px rgba(0,0,0,0.2);
+}
 
     
   </style>
@@ -168,7 +187,11 @@
   <a href="#mujeres">Mujeres</a>
   <a href="#hombres">Hombres</a>
   <a href="#contacto">Contacto</a>
-  <button class="btn" onclick="verCarrito()">🛒 Ver carrito</button>
+  <button class="btn carrito-btn" onclick="verCarrito()">
+  🛒 Ver carrito
+  <span id="contador-carrito">0</span>
+</button>
+
 </nav>
 
 <section id="inicio">
@@ -391,15 +414,26 @@ NARANJA X
   function verCarrito(){document.getElementById('modal').style.display='block';}
   function cerrarCarrito(){document.getElementById('modal').style.display='none';}
 
-  function actualizar(){
-    let lista=document.getElementById('lista');
-    let total=0;lista.innerHTML='';
-    carrito.forEach((p,i)=>{
-      total+=p.precio;
-      lista.innerHTML+=`<div class="item"><span>${p.nombre} - ${p.categoria} (${p.talle})</span><span>$${p.precio}</span><button onclick="eliminar(${i})">❌</button></div>`;
-    });
-    document.getElementById('total').textContent=total;
-  }
+ function actualizar(){
+  let lista = document.getElementById('lista');
+  let total = 0;
+  lista.innerHTML = '';
+
+  carrito.forEach((p,i)=>{
+    total += p.precio;
+    lista.innerHTML += `
+      <div class="item">
+        <span>${p.nombre} - ${p.categoria} (${p.talle})</span>
+        <span>$${p.precio}</span>
+        <button onclick="eliminar(${i})">❌</button>
+      </div>`;
+  });
+
+  document.getElementById('total').textContent = total;
+
+  // 🔔 ACTUALIZAR CONTADOR
+  document.getElementById('contador-carrito').textContent = carrito.length;
+}
 
  function enviarWhatsApp(){
   let mensaje = 'Hola, quiero realizar este pedido:%0A';
@@ -447,6 +481,7 @@ NARANJA X
 
 </body>
 </html>
+
 
 
 
