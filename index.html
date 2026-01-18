@@ -246,6 +246,89 @@
 .contacto-link:active{
   transform:scale(0.95);
 }
+/* ===== AJUSTES MOBILE PRO ===== */
+@media (max-width: 600px){
+
+  /* NAV */
+  nav{
+    padding:15px 10px;
+  }
+
+  nav a{
+    font-size:16px;
+    padding:8px 0;
+  }
+
+  /* BOTÓN CARRITO */
+  .carrito-btn{
+    width:100%;
+    justify-content:center;
+    font-size:16px;
+    padding:14px;
+    position:relative;
+  }
+
+  /* CONTADOR CARRITO */
+  #contador-carrito{
+    top:6px;
+    right:20px;
+    font-size:12px;
+    min-width:20px;
+    padding:3px 6px;
+  }
+
+  /* MODAL CARRITO */
+  .modal-content{
+    width:92%;
+    max-height:85vh;
+    overflow-y:auto;
+    margin:8% auto;
+  }
+
+  .item{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+  .item button{
+    align-self:flex-end;
+  }
+
+  /* TOAST */
+  .toast{
+    right:50%;
+    transform:translateX(50%) translateY(20px);
+    width:90%;
+    text-align:center;
+  }
+
+  .toast.mostrar{
+    transform:translateX(50%) translateY(0);
+  }
+
+  /* SECCIONES */
+  section{
+    padding:25px 15px;
+  }
+
+  /* TÍTULOS */
+  #inicio h3{
+    font-size:26px;
+  }
+
+  #inicio .script{
+    font-size:32px;
+  }
+
+  .titulo-seccion h3{
+    font-size:26px;
+  }
+
+  .titulo-seccion .script{
+    font-size:30px;
+  }
+}
 
   </style>
 </head>
@@ -412,10 +495,9 @@
 </section>
 
 <section id="contacto">
-  <h3>
-    Contacto
-    <span class="script">estamos para ayudarte</span>
-  </h3>
+  <h3><p>  Contacto</p></h3>
+  <h4><p>  <span class="script">estamos para ayudarte</span></p></h4>
+  
 
   <div class="contacto-links">
     <a href="https://wa.me/5491158825695" target="_blank" class="contacto-link">
@@ -572,6 +654,7 @@ NARANJA X
 
 </body>
 </html>
+
 
 
 
