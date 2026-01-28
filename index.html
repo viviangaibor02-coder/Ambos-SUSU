@@ -34,8 +34,6 @@
 
     .precio{color:var(--dorado);font-weight:bold;font-size:18px;}
 
-    select{margin:8px 0;padding:5px;border-radius:8px;}
-
     .btn{background:linear-gradient(135deg,var(--rosa),var(--rosa2));border:none;padding:10px 18px;border-radius:25px;font-weight:bold;cursor:pointer;color:#444;box-shadow:0 4px 8px rgba(0,0,0,.12);transition:all .3s ease;}
     .btn:hover{background:linear-gradient(135deg,var(--dorado),var(--rosa));color:#fff;transform:translateY(-2px);}
 
@@ -383,7 +381,6 @@
       <h4>Scrub Rosa</h4>
       <p>Tela: Antifluido</p>
       <p class="precio">$60.000</p>
-      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
     
@@ -392,7 +389,6 @@
       <h4>Scrub Rosa</h4>
       <p>Tela: Antifluido</p>
       <p class="precio">$60.000</p>
-      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
   
@@ -401,7 +397,6 @@
       <h4>Scrub Rosa</h4>
       <p>Tela: Antifluido</p>
       <p class="precio">$60.000</p>
-      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
     
@@ -410,7 +405,6 @@
       <h4>Scrub Rosa</h4>
       <p>Tela: Antifluido</p>
       <p class="precio">$60.000</p>
-      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
     
@@ -419,7 +413,6 @@
       <h4>Scrub Rosa</h4>
       <p>Tela: Antifluido</p>
       <p class="precio">$60.000</p>
-      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
     
@@ -428,7 +421,6 @@
       <h4>Scrub Rosa</h4>
       <p>Tela: Antifluido</p>
       <p class="precio">$60.000</p>
-      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
     
@@ -437,7 +429,6 @@
       <h4>Scrub Rosa</h4>
       <p>Tela: Antifluido</p>
       <p class="precio">$60.000</p>
-      <select><option>Talle</option><option>S</option><option>M</option><option>L</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Rosa',65000,'Mujer',this)">Agregar</button>
     </div>
 
@@ -461,7 +452,6 @@
       <h4>Scrub Azul</h4>
       <p>Tela: Algodón</p>
       <p class="precio">$55.000</p>
-      <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Azul',55000,'Hombre',this)">Agregar</button>
     </div>
      <div class="card">
@@ -469,7 +459,6 @@
       <h4>Scrub Azul</h4>
       <p>Tela: Algodón</p>
       <p class="precio">$55.000</p>
-      <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Azul',55000,'Hombre',this)">Agregar</button>
     </div>
     <div class="card">
@@ -477,7 +466,6 @@
       <h4>Scrub Azul</h4>
       <p>Tela: Algodón</p>
       <p class="precio">$55.000</p>
-      <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Azul',55000,'Hombre',this)">Agregar</button>
     </div>
      <div class="card">
@@ -485,7 +473,6 @@
       <h4>Scrub Azul</h4>
       <p>Tela: Algodón</p>
       <p class="precio">$55.000</p>
-      <select><option>Talle</option><option>M</option><option>L</option><option>XL</option></select>
      <button class="btn btn-agregar" onclick="agregar('Scrub Azul',55000,'Hombre',this)">Agregar</button>
     </div>
   </div>
@@ -547,27 +534,18 @@ NARANJA X
   let carrito = [];
 
   function agregar(nombre, precio, categoria, btn) {
-    const card = btn.closest('.card');
-    const select = card.querySelector('select');
-    const talle = select.value;
 
-    if (!talle || talle === 'Talle') {
-      alert('Por favor seleccioná un talle');
-      return;
-    }
+  btn.classList.add('activo');
+  setTimeout(() => btn.classList.remove('activo'), 500);
 
-    btn.classList.add('activo');
-    setTimeout(() => btn.classList.remove('activo'), 500);
+  const btnCarrito = document.querySelector('nav button');
+  btnCarrito.classList.add('shake');
+  setTimeout(() => btnCarrito.classList.remove('shake'), 600);
 
-    const btnCarrito = document.querySelector('nav button');
-    btnCarrito.classList.add('shake');
-    setTimeout(() => btnCarrito.classList.remove('shake'), 600);
-
-   carrito.push({ nombre, precio, talle, categoria });
-    actualizar();
-    mostrarToast();
-
-  }
+  carrito.push({ nombre, precio, categoria });
+  actualizar();
+  mostrarToast();
+}
 
   function eliminar(i){carrito.splice(i,1);actualizar();}
   function verCarrito(){document.getElementById('modal').style.display='block';}
@@ -582,7 +560,7 @@ NARANJA X
     total += p.precio;
     lista.innerHTML += `
       <div class="item">
-        <span>${p.nombre} - ${p.categoria} (${p.talle})</span>
+        <span>${p.nombre} - ${p.categoria} </span>
         <span>$${p.precio}</span>
         <button onclick="eliminar(${i})">❌</button>
       </div>`;
@@ -599,7 +577,7 @@ NARANJA X
   let total = 0;
 
   carrito.forEach(p => {
-    mensaje += `- ${p.nombre} (${p.categoria}) - Talle ${p.talle} $${p.precio}%0A`;
+    mensaje += `- ${p.nombre} (${p.categoria}) $${p.precio}%0A`;
     total += p.precio;
   });
 
@@ -654,6 +632,7 @@ NARANJA X
 
 </body>
 </html>
+
 
 
 
